@@ -1,0 +1,7 @@
+# Rename to .dockerignore and edit as needed
+.git
+.terraform
+*.tfstate
+__pycache__
+*.pyc
+evidence

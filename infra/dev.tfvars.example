@@ -1,0 +1,5 @@
+app_name = "appointment-slots"
+app_env = "dev"
+log_level = "INFO"
+port = 8080
+fail_mode = 0

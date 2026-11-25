@@ -1,0 +1,1 @@
+# Candidate: author Dockerfile; use non-root user and HEALTHCHECK

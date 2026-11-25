@@ -1,0 +1,2 @@
+# Candidate: author Compose service; publish 127.0.0.1:8080:8080
+# Use env_file generated/service.env

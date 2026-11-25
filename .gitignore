@@ -1,0 +1,9 @@
+*.tfstate
+*.tfstate.*
+.terraform/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+generated/service.env
+evidence/*.log
