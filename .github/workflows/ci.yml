@@ -1,0 +1,49 @@
+name: CI
+
+# Run on every push and every pull request
+on:
+  push:
+  pull_request:
+
+jobs:
+  # Job 1: check syntax and run unit tests
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check Python syntax
+        run: python -m compileall -q app tests
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+  # Job 2: build the Docker image (only runs if "test" passed)
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image tagged with the commit SHA
+        run: docker build -t appointment-slots:${{ github.sha }} .
+
+      - name: Run the container and check /healthz
+        run: |
+          docker run -d --name api -p 8080:8080 appointment-slots:${{ github.sha }}
+          sleep 5
+          curl --fail http://127.0.0.1:8080/healthz
+
+      - name: Show the built image
+        run: docker image ls appointment-slots
