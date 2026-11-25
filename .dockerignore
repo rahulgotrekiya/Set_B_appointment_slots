@@ -1,7 +1,21 @@
-# Rename to .dockerignore and edit as needed
+evidence
+generated
+k8s
+logs
+scripts
+tests
+*.md
+.env
+
+# Git and CI files
 .git
+.github
+
+# Terraform files and state
+infra
 .terraform
 *.tfstate
+
+# Python cache
 __pycache__
 *.pyc
-evidence

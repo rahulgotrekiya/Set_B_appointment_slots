@@ -1,0 +1,16 @@
+# Candidate: author Compose service; publish 127.0.0.1:8080:8080
+# Use env_file generated/service.env
+
+services:
+  api:
+    build: .
+    image: appointment-slots:local
+    env_file:
+      - generated/service.env
+    ports:
+      - "127.0.0.1:8080:8080"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
