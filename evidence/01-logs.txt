@@ -1,0 +1,8 @@
+Total Requests: 24
+HTTP 4xx Errors: 4
+HTTP 5xx Errors: 2
+
+Top 3 Most Common Routes:
+      8 /healthz
+      6 /api/slots?department=orthopedics
+      5 /readyz

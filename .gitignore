@@ -7,3 +7,5 @@ __pycache__/
 .env
 generated/service.env
 evidence/*.log
+.direnv/
+infra/dev.tfvars
